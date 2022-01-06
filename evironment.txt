@@ -1,0 +1,57 @@
+cd /home/super/桌面/detectron2
+conda activate detectron2  
+python demo_hw.py
+
+spyder
+conda deactivate
+
+/home/super/anaconda3/envs/detectron2/lib/python3.7/site-packages/detectron2
+
+os.environ['CUDA_VISIBLE_DEVICES'] = "0" 
+device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+
+mount /dev/sda1 /home/super/newDisk 开机后有时候需要重新挂载硬盘
+
+nvidia-smi -l
+nvcc -V
+	cat /usr/local/cuda/version.txt 查看cuda版本
+	cat /usr/local/cuda/include/cudnn.h | grep CUDNN_MAJOR -A 2 查看cudnn版本
+
+lsblk -f 查看磁盘挂载
+
+
+conda本身的命令里是有移植这个选项的。 
+假如前提是，在本地的conda里已经有一个AAA的环境，我想创建一个新环境跟它一模一样的叫BBB：
+conda create -n BBB --clone AAA
+conda create -n detectron2 --clone base
+
+conda info -e 查看conda 已经有的环境 （conda env list）
+conda remove -n detectron --all 删除detectron环境
+
+conda create -n env-name [list of package]。创建环境的命令
+	-n env-name是设置新建环境的名字，
+	list of package是可选项，
+	选择要为该环境安装的包。
+
+su
+Th46746400
+
+ulimit -n 20480
+ulimit -a
+
+mount /dev/sda1 /home/super/newDisk
+df
+ls -l
+chown super:super /home/super/newDisk
+
+vim /etc/fstab
+
+blkid
+/dev/sda1: UUID="26119e2b-db9c-447a-8e9d-f092a0a307ba" TYPE="ext4" PARTUUID="617a0695-01"
+vim /etc/fstab
+vi向下插入一行：O
+vi向上插入一行：o
+vi向上插入模式：i
+UUID=909A-A5C1  /boot/efi       vfat    umask=0077      0       1
+配置模板：UUID=26119e2b-db9c-447a-8e9d-f092a0a307ba  /home/super/newDisk       ext4    defaults      0       0
+:wq 保存文件并退出vi
